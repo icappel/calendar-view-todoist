@@ -81,6 +81,22 @@ const getDateColumn = async (date) => {
     return section
 }
 
+const showLoadingSpinner = () => {
+    const loadingSpinner = document.createElement("img")
+    loadingSpinner.src = "loading.gif"
+    loadingSpinner.className = "loading-spinner"
+    const spinnerContainer = document.createElement("div")
+    spinnerContainer.className = "loading-container"
+    
+    spinnerContainer.appendChild(loadingSpinner)
+    document.body.appendChild(spinnerContainer)
+    return spinnerContainer
+}
+
+const removeLoadingSpinner = (loadingSpinner) => {
+    document.body.removeChild(loadingSpinner)
+}
+
 const renderWeekTable = async (startDate) => {
     const dates = [startDate]
     for (let i = 1; i < 7; i++) {
@@ -89,11 +105,15 @@ const renderWeekTable = async (startDate) => {
     const row = document.createElement("div")
     row.className = "row"
 
+    const spinner = showLoadingSpinner(row)
+
     for (const date of dates) {
         const col = await getDateColumn(date)
         row.appendChild(col)
     }
     calendar.appendChild(row)
+
+    removeLoadingSpinner(spinner)
 
     numRows++
 }

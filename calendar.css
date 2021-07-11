@@ -1,3 +1,30 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.loading-spinner {
+    z-index: 3;
+    position: fixed;
+    left: 50vw;
+    top: 50vh;
+}
+
+.loading-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    background-color: #ffffff;
+    z-index: 2;
+}
+
+h1 {
+    text-align: center;
+    min-height: 3em;
+}
+
 #calendar .row {
     display: flex;
 }
@@ -9,8 +36,10 @@
 
 li {
     list-style-type: none;
-    /* margin-bottom: 1px; */
+    border-top: 1px solid grey;
     border-bottom: 1px solid grey;
+    margin-bottom: 0.2rem;
+    padding: 0.5rem;
 }
 
 button {
